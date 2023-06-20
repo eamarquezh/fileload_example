@@ -1,45 +1,39 @@
 <?php
 
-$fil=$_POST['newname'];
-// Count total files
-$countfiles = count($_FILES['file']['name']);
-
-// Upload directory
 $upload_location = "upload/";
 
-$count = 0;
-for($i=0;$i < $countfiles;$i++){
+$data = array();
+$data['status'] = 'error';
+$data['result'] = 'ok';
 
-   // File name
-   $filename = $_FILES['file']['name'][$i];
+if (isset($_FILES['file'])) {
+    $files = $_FILES['file'];
+    
+    // Valid file extension
+    $valid_ext = array("png");
 
-   // File path
-   $parts = explode(".",$filename);
-   $name_n = $_POST['newname'] .".". end($parts);
-   $path = $upload_location . $_POST['newname'] .".". end($parts);
+    foreach ($files['tmp_name'] as $key => $tmp_name) {
+        $filename = $files['name'][$key];
+        $file_extension = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
+        
+        if (in_array($file_extension, $valid_ext) && isset($tmp_name)) {
+            $destination = $upload_location . $filename;
 
-   // file extension
-   $file_extension = pathinfo($path, PATHINFO_EXTENSION);
-   $file_extension = strtolower($file_extension);
-
-   // Valid file extensions
-   $valid_ext = array("png");
-
-   // Check extension
-   if(in_array($file_extension,$valid_ext)){
-
-      // Upload file
-      if(rename($_FILES['file']['tmp_name'][$i],$path)){
-        $count += 1;
-      } 
-   }
-
+            $file_content = file_get_contents($tmp_name);
+            if ($file_content !== false) {
+                if (file_put_contents($destination, $file_content) !== false) {
+                    $data['status'] = 'ok';
+                } else {
+                    // Error al guardar el archivo
+                }
+            } else {
+                // Error al leer el contenido del archivo
+            }
+        }
+    }
 }
 
-$data = array();
-$data['status'] = 'ok';
-$data['result'] = $fil;
-
-echo json_encode($data);;
+echo json_encode($data);
 exit;
+
 ?>
