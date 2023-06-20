@@ -22,7 +22,7 @@ async function uploadImagen_fetch(datfile,datfile2) {
     await fetch('loadfile.php',{method: "POST",body: formData})
     .then(response=>response.json())
         .then(data=>{
-            console.log(data);
+            console.log(data.result);
         });
 
     }else{

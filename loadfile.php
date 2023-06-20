@@ -36,6 +36,10 @@ for($i=0;$i < $countfiles;$i++){
 
 }
 
-echo json_encode('carga');;
+$data = array();
+$data['status'] = 'ok';
+$data['result'] = $fil;
+
+echo json_encode($data);;
 exit;
 ?>
