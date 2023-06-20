@@ -19,7 +19,7 @@ async function uploadImagen_fetch(datfile,datfile2) {
         formData.append("file[]", datfile.files[0]);
         formData.append("newname", datfile2);
       }
-    await fetch('loadfile.php',{method: "POST",body: formData})
+    await fetch('loadfile2.php',{method: "POST",body: formData})
     .then(response=>response.json())
         .then(data=>{
             console.log(data.result);
