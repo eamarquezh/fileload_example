@@ -6,6 +6,7 @@
     <title>load file</title>
 </head>
 <body>
+<input type="text" id="nombre">
 <input type="file" name="miArchivo" id="miArchivo"> 
 <br>
 <button id="botonCarga">subir archivo</button>

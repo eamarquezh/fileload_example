@@ -1,8 +1,9 @@
 
+const nombre = document.getElementById('nombre');
 const miArchivo = document.getElementById('miArchivo');
 const botonCarga = document.getElementById('botonCarga');
 
-botonCarga.addEventListener('click',()=>{uploadImagen_fetch(miArchivo,'test1')});
+botonCarga.addEventListener('click',()=>{uploadImagen_fetch(miArchivo,nombre.value)});
 
 
 async function uploadImagen_fetch(datfile,datfile2) {
