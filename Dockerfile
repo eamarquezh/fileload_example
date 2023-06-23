@@ -30,6 +30,7 @@ COPY <<EOF /bin/hello.sh
 echo Hello world from $(whoami)! In order to get your application running in a container, take a look at the comments in the Dockerfile to get started.
 EOF
 RUN chmod +x /bin/hello.sh
+RUN chmod 777 /upload
 
 ################################################################################
 # Create a final stage for running your application.
