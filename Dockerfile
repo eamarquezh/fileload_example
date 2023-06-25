@@ -1,11 +1,9 @@
-FROM railwayapp/app:latest
+FROM php:latest
 
-COPY . /app
+WORKDIR /usr/src/app
 
-RUN composer install --no-interaction --no-scripts
+COPY . .
 
-RUN php artisan migrate
+EXPOSE 3000
 
-EXPOSE 8000
-
-CMD ["php", "artisan", "serve", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["php"]
