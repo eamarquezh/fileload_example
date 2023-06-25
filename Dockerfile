@@ -1,9 +1,7 @@
 FROM php:latest
 
-WORKDIR /usr/src/app
+WORKDIR /app
 
-COPY . .
-
-EXPOSE 3000
+EXPOSE $PORT
 
 CMD ["php"]
