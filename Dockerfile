@@ -1,7 +1,6 @@
 FROM php:latest
 
-WORKDIR /app
-
+WORKDIR /
 EXPOSE $PORT
 
 CMD ["php"]
