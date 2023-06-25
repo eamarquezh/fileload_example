@@ -1,8 +1,11 @@
-# Usar una imagen base de PHP con Apache
-FROM php:7.4-apache
+FROM railwayapp/app:latest
 
-# Copiar la aplicación PHP a la carpeta /var/www/html del contenedor
-COPY . /var/www/html
+COPY . /app
 
-# Dar permisos de escritura a la carpeta upload
-RUN chmod -R 777 /var/www/html/upload
+RUN composer install --no-interaction --no-scripts
+
+RUN php artisan migrate
+
+EXPOSE 8000
+
+CMD ["php", "artisan", "serve", "--host", "0.0.0.0", "--port", "8000"]
