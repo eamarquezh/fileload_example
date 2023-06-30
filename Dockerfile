@@ -2,9 +2,9 @@
 FROM php:7.4-apache
 
 # Copiar el archivo index.php al directorio de trabajo en el contenedor
-COPY . /var/www/html/
+COPY . /app
 
-RUN chmod -R 777 /var/www/html/upload
+RUN chmod -R 777 /app/upload
 
 # Exponer el puerto 80 para el tráfico web
 EXPOSE $PORT
