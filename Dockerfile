@@ -7,7 +7,7 @@ COPY . /app
 RUN chmod -R 777 /app/upload
 
 # Exponer el puerto 80 para el tráfico web
-EXPOSE $PORT
+#EXPOSE $PORT
 
 # Comando para iniciar Apache en segundo plano cuando se inicie el contenedor
 CMD ["apache2-foreground"]
