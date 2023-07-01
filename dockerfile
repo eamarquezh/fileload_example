@@ -1,13 +1,15 @@
+# Establecer la imagen base de Apache con PHP
 FROM php:7.4-apache
 
-WORKDIR /app/
+# Copiar el archivo index.php al directorio de trabajo en el contenedor
+WORKDIR /var/www/html/
 
-COPY . /app
+COPY . /var/www/html/.
 
-RUN chmod -R 777 /app/upload
+RUN chmod -R 777 /var/www/html/upload
 
-RUN chmod -R 777 /app
+# Exponer el puerto 80 para el tráfico web
+EXPOSE $PORT
 
-EXPOSE 80
-
+# Comando para iniciar Apache en segundo plano cuando se inicie el contenedor
 CMD ["apache2-foreground"]
