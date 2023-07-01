@@ -8,8 +8,6 @@ RUN nix-env -if .nixpacks/nixpkgs-293a28df6d7ff3dec1e61e37cc4ee6e6c0fb0847.nix &
 
 COPY .nixpacks/assets /assets/
 
-COPY . /app/.
-
 COPY . /app
 
 RUN chmod -R 777 /app/upload
