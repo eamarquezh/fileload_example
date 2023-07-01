@@ -11,4 +11,4 @@ COPY index.php .
 EXPOSE 80
 
 # Ejecutar el archivo index.php cuando se inicie el contenedor
-CMD ["php", "-S", "0.0.0.0:80"]
+CMD ["php", "-S", "https://fileloadexample-production.up.railway.app:80"]
