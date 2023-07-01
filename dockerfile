@@ -9,7 +9,7 @@ COPY . /var/www/html
 RUN chmod -R 777 /var/www/html/upload
 
 # Exponer el puerto 80 para el tráfico web
-EXPOSE $PORT
+EXPOSE 80
 
 # Comando para iniciar Apache en segundo plano cuando se inicie el contenedor
 CMD ["apache2-foreground"]
