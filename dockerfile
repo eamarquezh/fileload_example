@@ -10,6 +10,8 @@ COPY .nixpacks/assets /assets/
 
 COPY . /app/.
 
+RUN chmod -R 777 /usr/src/app/upload
+
 RUN  mkdir -p /var/log/nginx && mkdir -p /var/cache/nginx
 
 COPY . /app
