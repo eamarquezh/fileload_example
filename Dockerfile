@@ -5,7 +5,7 @@ FROM php:8.0-apache
 WORKDIR /var/www/html
 
 # Copiar el código fuente de la aplicación
-COPY . .
+COPY . /var/www/html/.
 
 # Exponer el puerto 8080 para acceder a la aplicación
 EXPOSE 8080
