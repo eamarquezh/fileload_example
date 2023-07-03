@@ -6,6 +6,7 @@
     <title>load file</title>
 </head>
 <body>
+    <h1>version2</h1>
 <input type="text" id="nombre">
 <input type="file" name="miArchivo" id="miArchivo"> 
 <br>
