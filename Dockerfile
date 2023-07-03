@@ -1,18 +1,16 @@
-# Establecer la imagen base a PHP con Apache
-FROM php:8.0-apache
+# Establecer la imagen base de Apache con PHP
+FROM php:7.4-apache
 
-# Establecer el directorio de trabajo dentro del contenedor
+# Copiar el archivo index.php al directorio de trabajo en el contenedor
 WORKDIR /var/www/html
 
-# Copiar el código fuente de la aplicación
-COPY . /var/www/html/.
+COPY . /var/www/html
 
-# Exponer el puerto 8080 para acceder a la aplicación
-EXPOSE 8080
+RUN chmod -R 777 /var/www/html/upload
+RUN chmod -R 777 /var/www/html/
 
-# Configurar Apache para trabajar con PHP
-RUN a2enmod rewrite
-RUN a2enmod headers
+# Exponer el puerto 80 para el tráfico web
+EXPOSE 80
 
-# Comando personalizado para iniciar la aplicación en Railway
-CMD ["railway", "run", "apache2-foreground"]
+# Comando para iniciar Apache en segundo plano cuando se inicie el contenedor
+CMD ["apache2-foreground"]
